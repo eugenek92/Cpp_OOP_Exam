@@ -1,10 +1,12 @@
 #include <iostream>
 
+
 using namespace std;
+void Logo();
 
 int main() {
 
-	//Starting project
+	Logo();
 
 	return 0;
 
