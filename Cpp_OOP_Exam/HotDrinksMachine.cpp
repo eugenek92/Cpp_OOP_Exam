@@ -33,26 +33,24 @@ void HotDrinksMachine::ShowDrinks() const
 
 //operator () override
 
-/*bool HotDrinksMachine::operator()(Drink* d)
-{
-	return d->getTitle() == title;
-}*/
+
 
 void HotDrinksMachine::AddDrink(Drink* d)
 {
-	if (d->getTitle()==title) 
+
+	if (FindDrink(d->getTitle()))
 	{
 		cout << "Eror";
 	}
-	else 
+	else
 	{
 		drinks.insert(d).second;
 	}
 }
 
-void HotDrinksMachine::DeleteDrink(Drink* d)
+void HotDrinksMachine::DeleteDrink(const string& title)
 {
-	auto tmp = find_if(drinks.begin(), drinks.end(), title);
+	auto tmp = find_if(drinks.begin(), drinks.end(), FindDrinkFunctor(title));
 	if (tmp != drinks.end())
 	{
 		delete* tmp;
@@ -65,25 +63,27 @@ void HotDrinksMachine::DeleteDrink(Drink* d)
 	}
 }
 
-Drink* HotDrinksMachine::FindDrink(string& title)
+Drink* HotDrinksMachine::FindDrink(const string& title)
 {
-	auto tmp = find_if(drinks.begin(), drinks.end(), title);
+	auto tmp = find_if(drinks.begin(), drinks.end(), FindDrinkFunctor(title));
 	if (tmp != drinks.end())
 	{
-		cout << "Serching drink: "<<*tmp<<endl;
+		cout << "Serching drink: ";
+		return *tmp;
 	}
 	else
 	{
 		cout << "Searching drink not found!" << endl;
+		return nullptr;
 	}
 }
 
-void HotDrinksMachine::setComponent(string& name, int n)
+void HotDrinksMachine::setComponent(const string& name, int n)
 {
 	components[name] = n;
 }
 
-void HotDrinksMachine::AddComponent(string& name, int cm)
+void HotDrinksMachine::AddComponent(const string& name, int cm)
 {
 	if (components.find(name) == components.end())
 	{
@@ -96,7 +96,7 @@ void HotDrinksMachine::AddComponent(string& name, int cm)
 	}
 }
 
-void HotDrinksMachine::DeleteComponent(string& name)
+void HotDrinksMachine::DeleteComponent(const string& name)
 {
 	auto tmp = components.find(name);
 	if (tmp == components.end())
@@ -126,7 +126,7 @@ void HotDrinksMachine::ShowComponents() const
 	}
 }
 
-void HotDrinksMachine::SellDrink(string& title, int& money)
+void HotDrinksMachine::SellDrink(const string& title, int& money)
 {
 	Drink* d = FindDrink(title);
 	if (!d)

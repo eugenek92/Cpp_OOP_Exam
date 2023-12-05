@@ -2,11 +2,11 @@
 
 using namespace std;
 
-void Logo();
+void Menu();
 
 int main() {
 	
-	Logo();
+	Menu();
 
 	return 0;
 

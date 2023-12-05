@@ -5,7 +5,7 @@ Drink::Drink(string title, int price):title(title), price(price) {}
 
 int Drink::getPrice() const
 {
-	return this->price;
+	return price;
 }
 
 void Drink::setPrice(int price)
@@ -13,14 +13,14 @@ void Drink::setPrice(int price)
 	this->price = price;
 }
 
-string Drink::getTitle() const
+const string& Drink::getTitle() const
 {
-	return this->title;
+	return title;
 }
 
 Components Drink::getComponents() const
 {
-	return this->components;
+	return components;
 }
 
 //Coffee and tea

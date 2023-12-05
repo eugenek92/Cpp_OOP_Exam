@@ -16,7 +16,7 @@ public:
 	
 	int getPrice() const;
 	void setPrice(int price);
-	string getTitle() const;
+	const string& getTitle() const;
 	Components getComponents() const;
 };
 

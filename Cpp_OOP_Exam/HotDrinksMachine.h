@@ -5,27 +5,37 @@
 using namespace std;
 
 typedef set<Drink*>Drinks;
-string& title;
 
 
 class HotDrinksMachine
 {
+	friend class Admin;
 	Drinks drinks;
 	Components components;
 	int cache;
+
+	class FindDrinkFunctor {
+		const string& title;
+	public:
+		FindDrinkFunctor(const string& title):title(title){}
+		bool operator()(const Drink* d)
+		{
+			return d->getTitle() == title;
+		}
+	};
+	
 public:
 	HotDrinksMachine();
 	~HotDrinksMachine();
 	void ShowDrinks() const;
-	//bool operator()(Drink* d);
 	void AddDrink(Drink* d);
-	void DeleteDrink(Drink* d);
-	Drink* FindDrink(string& title);
-	void setComponent(string& name, int n);
-	void AddComponent(string& name, int cm);
-	void DeleteComponent(string& name);
+	void DeleteDrink(const string& title);
+	Drink* FindDrink(const string& title);
+	void setComponent(const string& name, int n);
+	void AddComponent(const string& name, int cm);
+	void DeleteComponent(const string& name);
 	void ShowComponents()const;
-	void SellDrink(string& title, int& money);
+	void SellDrink(const string& title, int& money);
 
 };
 
