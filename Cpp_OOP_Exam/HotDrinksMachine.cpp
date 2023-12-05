@@ -7,9 +7,9 @@ HotDrinksMachine::HotDrinksMachine() :cache(0) {}
 
 HotDrinksMachine::~HotDrinksMachine()
 {
-	while (!this->drinks.empty())
+	while (!drinks.empty())
 	{
-		auto tmp = this->drinks.begin();
+		auto tmp = drinks.begin();
 		delete* tmp;
 		drinks.erase(tmp);
 	}
@@ -18,48 +18,46 @@ HotDrinksMachine::~HotDrinksMachine()
 void HotDrinksMachine::ShowDrinks() const
 {
 	cout << "==========Available drinks==========" << endl;
-	if (this->drinks.empty())
+	if (drinks.empty())
 	{
 		cout << "Sorry, drinks are not available for now!" << endl;
 	}
 	else
 	{
-		for (Drink* d : this->drinks)
+		for (Drink* d : drinks)
 		{
 			cout << setw(40) << d->getTitle() << setw(10) << d->getPrice() << endl;
 		}
 	}
 }
 
-//operator () override
 
-
-
-void HotDrinksMachine::AddDrink(Drink* d)
+bool HotDrinksMachine::AddDrink(Drink* d)
 {
 
 	if (FindDrink(d->getTitle()))
 	{
-		cout << "Eror";
+		return false;
 	}
 	else
 	{
 		drinks.insert(d).second;
+		return true;
 	}
 }
 
-void HotDrinksMachine::DeleteDrink(const string& title)
+bool HotDrinksMachine::DeleteDrink(const string& title)
 {
 	auto tmp = find_if(drinks.begin(), drinks.end(), FindDrinkFunctor(title));
 	if (tmp != drinks.end())
 	{
 		delete* tmp;
 		drinks.erase(tmp);
-		cout << "Drink successfully deleted" << endl;
+		return true;
 	}
 	else
 	{
-		cout << "Drink was not deleted" << endl;
+		return false;
 	}
 }
 
@@ -68,12 +66,10 @@ Drink* HotDrinksMachine::FindDrink(const string& title)
 	auto tmp = find_if(drinks.begin(), drinks.end(), FindDrinkFunctor(title));
 	if (tmp != drinks.end())
 	{
-		cout << "Serching drink: ";
 		return *tmp;
 	}
 	else
 	{
-		cout << "Searching drink not found!" << endl;
 		return nullptr;
 	}
 }
@@ -83,30 +79,30 @@ void HotDrinksMachine::setComponent(const string& name, int n)
 	components[name] = n;
 }
 
-void HotDrinksMachine::AddComponent(const string& name, int cm)
+bool HotDrinksMachine::AddComponent(const string& name, int cm)
 {
 	if (components.find(name) == components.end())
 	{
-		cout << "There no this components!" << endl;
+		return false;
 	}
 	else
 	{
 		components[name] += cm;
-		cout << "Component successfully add!" << endl;
+		return true;
 	}
 }
 
-void HotDrinksMachine::DeleteComponent(const string& name)
+bool HotDrinksMachine::DeleteComponent(const string& name)
 {
 	auto tmp = components.find(name);
 	if (tmp == components.end())
 	{
-		cout << "There no this components!" << endl;
+		return false;
 	}
 	else
 	{
 		components.erase(tmp);
-		cout << "Component successfully deleted!" << endl;
+		return true;
 	}
 }
 
@@ -115,7 +111,7 @@ void HotDrinksMachine::ShowComponents() const
 	cout << "Components: " << endl;
 	if (components.empty())
 	{
-		cout << "Ñomponents are missing!" << endl;
+		cout << "Components are missing!" << endl;
 	}
 	else
 	{

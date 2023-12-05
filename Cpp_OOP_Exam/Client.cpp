@@ -11,7 +11,7 @@ void Client::attach(HotDrinksMachine* m)
 	hd_machine = m;
 }
 
-void Client::showDrinks()
+void Client::ShowDrinks()
 {
 	if (hd_machine)
 	{

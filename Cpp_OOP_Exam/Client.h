@@ -12,7 +12,7 @@ protected:
 public:
 	Client();
 	void attach(HotDrinksMachine* m);
-	void showDrinks();
+	void ShowDrinks();
 	void BuyDrink();
 	
 };

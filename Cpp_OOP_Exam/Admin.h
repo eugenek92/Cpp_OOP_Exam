@@ -7,7 +7,10 @@ class Admin:public Client
 {
 public:
 	void ShowComponents();
-	void setComponents();
-	void AddComponents();
+	void setComponent();
+	void AddComponent();
+	void DeleteComponent();
+	void AddDrink();
+	void DeleteDrink();
 };
 

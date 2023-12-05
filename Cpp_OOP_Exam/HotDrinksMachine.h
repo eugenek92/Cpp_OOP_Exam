@@ -6,7 +6,6 @@ using namespace std;
 
 typedef set<Drink*>Drinks;
 
-
 class HotDrinksMachine
 {
 	friend class Admin;
@@ -28,12 +27,12 @@ public:
 	HotDrinksMachine();
 	~HotDrinksMachine();
 	void ShowDrinks() const;
-	void AddDrink(Drink* d);
-	void DeleteDrink(const string& title);
+	bool AddDrink(Drink* d);
+	bool DeleteDrink(const string& title);
 	Drink* FindDrink(const string& title);
 	void setComponent(const string& name, int n);
-	void AddComponent(const string& name, int cm);
-	void DeleteComponent(const string& name);
+	bool AddComponent(const string& name, int cm);
+	bool DeleteComponent(const string& name);
 	void ShowComponents()const;
 	void SellDrink(const string& title, int& money);
 

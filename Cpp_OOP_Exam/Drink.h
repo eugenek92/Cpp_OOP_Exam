@@ -7,6 +7,7 @@ typedef map<string, int>Components;
 
 class Drink
 {
+	friend class Admin;
 protected:
 	string title;
 	int price;

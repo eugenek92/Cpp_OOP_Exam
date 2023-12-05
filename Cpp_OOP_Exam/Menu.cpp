@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Admin.h"
+#include "Client.h"
 #include <fstream>
 
 using namespace std;
@@ -16,7 +17,7 @@ void Menu()
 	HotDrinksMachine hdm;
 	jack.attach(&hdm);
 	jane.attach(&hdm);
-
+	 
 	int choice;
 	bool exit = false;
 
@@ -33,31 +34,51 @@ void Menu()
 			{
 				cout << "\n1.Show drink list;\n2.Show components;\n3.Add drink;"<<
 					"\n4.Remove drink;\n5.Set components;\n6.Add components;"<<
-					"\n.7.Remove component;\n0.Exit\0" << endl;
+					"\n7.Remove component;\n0.Exit\0" << endl;
 				cin >> choice;
 				cin.ignore();
 				switch (choice)
 				{
 				case 1:
-					&Admin::showDrinks;
+					jack.ShowDrinks();
 					break;
 				case 2:
-					&Admin::ShowComponents;
+					jack.ShowComponents();
 					break;
 				case 3:
-					//add drinks
+					jack.AddDrink();
 					break;
 				case 4:
-					//remove drinks
+					jack.DeleteDrink();
 					break;
 				case 5:
-					&Admin::setComponents;
+					jack.setComponent();
 					break;
 				case 6:
-					&Admin::AddComponents;
+					jack.AddComponent();
 					break;
 				case 7:
-					//remove components
+					jack.DeleteComponent();
+					break;
+				case 0:
+					exit = true;
+					break;
+				}
+			} while (exit != true);
+			break;
+		case 2:
+			do
+			{
+				cout << "\n1.Show drink list;\n2.Buy drink;\n0.Exit\0" << endl;
+				cin >> choice;
+				cin.ignore();
+				switch (choice)
+				{
+				case 1:
+					jane.ShowDrinks();
+					break;
+				case 2:
+					jane.BuyDrink();
 					break;
 				case 0:
 					exit = true;
