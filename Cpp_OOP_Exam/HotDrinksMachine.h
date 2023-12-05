@@ -20,11 +20,12 @@ public:
 	//bool operator()(Drink* d);
 	void AddDrink(Drink* d);
 	void DeleteDrink(Drink* d);
-	void FindDrink(string& title);
+	Drink* FindDrink(string& title);
 	void setComponent(string& name, int n);
 	void AddComponent(string& name, int cm);
 	void DeleteComponent(string& name);
 	void ShowComponents()const;
+	void SellDrink(string& title, int& money);
 
 };
 

@@ -7,9 +7,9 @@ HotDrinksMachine::HotDrinksMachine() :cache(0) {}
 
 HotDrinksMachine::~HotDrinksMachine()
 {
-	while (!drinks.empty())
+	while (!this->drinks.empty())
 	{
-		auto tmp = drinks.begin();
+		auto tmp = this->drinks.begin();
 		delete* tmp;
 		drinks.erase(tmp);
 	}
@@ -18,13 +18,13 @@ HotDrinksMachine::~HotDrinksMachine()
 void HotDrinksMachine::ShowDrinks() const
 {
 	cout << "==========Available drinks==========" << endl;
-	if (drinks.empty())
+	if (this->drinks.empty())
 	{
 		cout << "Sorry, drinks are not available for now!" << endl;
 	}
 	else
 	{
-		for (Drink* d : drinks)
+		for (Drink* d : this->drinks)
 		{
 			cout << setw(40) << d->getTitle() << setw(10) << d->getPrice() << endl;
 		}
@@ -65,7 +65,7 @@ void HotDrinksMachine::DeleteDrink(Drink* d)
 	}
 }
 
-void HotDrinksMachine::FindDrink(string& title)
+Drink* HotDrinksMachine::FindDrink(string& title)
 {
 	auto tmp = find_if(drinks.begin(), drinks.end(), title);
 	if (tmp != drinks.end())
@@ -125,6 +125,42 @@ void HotDrinksMachine::ShowComponents() const
 		}
 	}
 }
+
+void HotDrinksMachine::SellDrink(string& title, int& money)
+{
+	Drink* d = FindDrink(title);
+	if (!d)
+	{
+		cout << "Illegal drink!" << endl;
+	}
+	int price = d->getPrice();
+	if (price > money)
+	{
+		cout << "Not enough money!" << endl;
+	}
+	const Components& cm = d->getComponents();
+	for (auto& p : cm)
+	{
+		auto tmp = this->components.find(p.first);
+		if (tmp == this->components.end())
+		{
+			cout << "Absent ingredient!" << endl;
+		}
+		if (tmp->second < p.second)
+		{
+			cout << "Not enough ingredient!" << endl;
+		}
+	}
+	for (auto& p : cm)
+	{
+		auto tmp = this->components.find(p.first);
+		tmp->second -= p.second;
+	}
+	money -= price;
+	this->cache += price;
+	cout << "Action is succesfull!" << endl;
+}
+
 
 
 
