@@ -102,16 +102,16 @@ void Admin::AddDrink()
 			d = new Americano(70);
 			break;
 		case 2:
-			d = new Capuccino(70);
+			d = new Capuccino(50);
 			break;
 		case 3:
-			d = new Espresso(70);
+			d = new Espresso(80);
 			break;
 		case 4:
-			d = new ClassicTea(70);
+			d = new ClassicTea(35);
 			break;
 		case 5:
-			d = new GreenTea(70);
+			d = new GreenTea(40);
 			break;
 		default:
 			cout << "Something wrong!" << endl;
