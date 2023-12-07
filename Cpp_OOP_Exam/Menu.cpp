@@ -44,6 +44,7 @@ void Menu()
 					break;
 				case 2:
 					jack.ShowComponents();
+					//hdm.WriteToFile(hdm);
 					break;
 				case 3:
 					jack.AddDrink();
@@ -53,6 +54,7 @@ void Menu()
 					break;
 				case 5:
 					jack.setComponent();
+					hdm.WriteToFile(hdm);
 					break;
 				case 6:
 					jack.AddComponent();

@@ -1,6 +1,7 @@
 #include "HotDrinksMachine.h"
 #include<iostream>
 #include<iomanip>
+#include <fstream>
 using namespace std;
 
 HotDrinksMachine::HotDrinksMachine() :cache(0) {}
@@ -157,6 +158,35 @@ void HotDrinksMachine::SellDrink(const string& title, int& money)
 	cout << "Action is succesfull!" << endl;
 }
 
+void HotDrinksMachine::WriteToFile(HotDrinksMachine& read)
+{
+	ofstream out("HDMachine.txt");
+	out << read;
+	out.close();
+}
+
+/*void HotDrinksMachine::ReadFromFile(HotDrinksMachine& read)
+{
+	ifstream in("HDMachine.txt");
+	in >> read;
+	in.close();
+}*/
 
 
+ostream& operator << (ostream& out, const HotDrinksMachine& d)
+{
+	for (auto& cm : d.components)
+	{
+		out <<  cm.first <<" : " << cm.second << endl;
+	}
+	//out << "|" << endl;
+	return out;
+}
+
+/*istream& operator >> (istream& in, HotDrinksMachine& d)
+{
+	string end = "|";
+	
+	return in;
+}*/
 
