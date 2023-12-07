@@ -18,6 +18,7 @@ void Admin::ShowComponents()
 
 void Admin::setComponent()
 {
+	system("cls");
 	if (hd_machine)
 	{
 		string name;
@@ -37,6 +38,7 @@ void Admin::setComponent()
 
 void Admin::AddComponent()
 {
+	system("cls");
 	if (hd_machine)
 	{
 		string name;
@@ -52,7 +54,7 @@ void Admin::AddComponent()
 		}
 		else
 		{
-			cout << "There no this components!" << endl;
+			cout << "There no components!" << endl;
 		}
 	}
 	else
@@ -63,6 +65,7 @@ void Admin::AddComponent()
 
 void Admin::DeleteComponent()
 {
+	system("cls");
 	if (hd_machine)
 	{
 		string name;
@@ -87,7 +90,7 @@ void Admin::AddDrink()
 {
 	if (hd_machine)
 	{
-		cout << "Select, what drink you want to add:\n"<<
+		cout << "\nSelect, what drink you want to add:\n"<<
 			"1.Americano\n2.Capuccino\n3.Espresso\n4.Classic Tea\n5.Green Tea" << endl;
 		int choice;
 		cin >> choice;
@@ -135,21 +138,33 @@ void Admin::AddDrink()
 
 void Admin::DeleteDrink()
 {
+	system("cls");
 	if (hd_machine) {
 		string title;
 		cout << "Enter name drink you want remove: ";
 		getline(cin, title);
 		if (hd_machine->DeleteDrink(title))
 		{
-			cout << "Drink successfully deleted" << endl;
+			cout << "\nDrink successfully deleted" << endl;
 		}
 		else
 		{
-			cout << "Drink was not deleted" << endl;
+			cout << "\nDrink was not deleted" << endl;
 		}
 	}
 	else
 	{
 		cout << "Attach to vending machine please!" << endl;
 	}
+}
+
+void Admin::ShowRequirements()
+{
+	system("cls");
+
+	cout << "Americano  | Water: 200  Coffee:5          |" << endl;
+	cout << "Capuccino  | Water: 150  Coffee:5  Milk:20 |" << endl;
+	cout << "Espresso   | Water: 50   Coffee:5          |" << endl;
+	cout << "Classic Tea| Water: 200  Black Tea:10      |" << endl;
+	cout << "Green Tea  | Water: 200  Green Tea:5       |" << endl;
 }

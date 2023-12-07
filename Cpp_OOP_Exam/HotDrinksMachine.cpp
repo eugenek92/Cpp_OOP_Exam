@@ -18,7 +18,8 @@ HotDrinksMachine::~HotDrinksMachine()
 
 void HotDrinksMachine::ShowDrinks() const
 {
-	cout << "==========Available drinks==========" << endl;
+	system("cls");
+	cout << "============Available drinks============" << endl;
 	if (drinks.empty())
 	{
 		cout << "Sorry, drinks are not available for now!" << endl;
@@ -109,6 +110,7 @@ bool HotDrinksMachine::DeleteComponent(const string& name)
 
 void HotDrinksMachine::ShowComponents() const
 {
+	system("cls");
 	cout << "Components: " << endl;
 	if (components.empty())
 	{
@@ -165,28 +167,32 @@ void HotDrinksMachine::WriteToFile(HotDrinksMachine& read)
 	out.close();
 }
 
-/*void HotDrinksMachine::ReadFromFile(HotDrinksMachine& read)
+void HotDrinksMachine::ReadFromFile(HotDrinksMachine& read)
 {
 	ifstream in("HDMachine.txt");
 	in >> read;
 	in.close();
-}*/
+}
 
 
 ostream& operator << (ostream& out, const HotDrinksMachine& d)
 {
 	for (auto& cm : d.components)
 	{
-		out <<  cm.first <<" : " << cm.second << endl;
+		out <<  cm.first <<"   " << cm.second << endl;
 	}
-	//out << "|" << endl;
+	
 	return out;
 }
 
-/*istream& operator >> (istream& in, HotDrinksMachine& d)
+istream& operator >> (istream& in, HotDrinksMachine& d)
 {
-	string end = "|";
-	
+	string title;
+	int price;
+	while (in>>title>>price)
+	{
+		d.components[title]=price;
+	}
 	return in;
-}*/
+}
 

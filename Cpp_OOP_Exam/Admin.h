@@ -12,5 +12,6 @@ public:
 	void DeleteComponent();
 	void AddDrink();
 	void DeleteDrink();
+	void ShowRequirements();
 };
 

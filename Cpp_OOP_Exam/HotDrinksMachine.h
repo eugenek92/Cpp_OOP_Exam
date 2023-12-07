@@ -37,10 +37,10 @@ public:
 	void SellDrink(const string& title, int& money);
 
 	void WriteToFile(HotDrinksMachine& read);
-	//void ReadFromFile(HotDrinksMachine& read);
+	void ReadFromFile(HotDrinksMachine& read);
 
 	friend ostream& operator << (ostream& out, const HotDrinksMachine& d);
-	//friend istream& operator >> (istream& in, HotDrinksMachine& d);
+	friend istream& operator >> (istream& in, HotDrinksMachine& d);
 
 };
 
