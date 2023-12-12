@@ -1,2 +1,3 @@
-Coffee    2000
+Coffee   2000
+Milk   1000
 Water   2000

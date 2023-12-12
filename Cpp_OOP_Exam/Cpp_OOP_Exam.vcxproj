@@ -129,15 +129,16 @@
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="CoffeeShop.cpp" />
     <ClCompile Include="Drink.cpp" />
     <ClCompile Include="HotDrinksMachine.cpp" />
     <ClCompile Include="Logo.cpp" />
-    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="CoffeeShop.h" />
     <ClInclude Include="Drink.h" />
     <ClInclude Include="HotDrinksMachine.h" />
     <ClInclude Include="resource.h" />
